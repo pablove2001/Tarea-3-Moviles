@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 
 class ItemActividad extends StatelessWidget {
-  ItemActividad({super.key});
+  final int index;
+  final String nombre;
+  final String imagen;
+
+  ItemActividad(
+      {super.key,
+      required this.index,
+      required this.nombre,
+      required this.imagen});
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +21,13 @@ class ItemActividad extends StatelessWidget {
           Container(
             height: 120,
             width: 120,
-            color: Colors.purple,
+            child: Image(
+              image: NetworkImage("${imagen}"),
+              fit: BoxFit.cover,
+            ),
           ),
-          Text("Day 1", style: TextStyle(fontSize: 11)),
-          Text("Bali mountains"),
+          Text("Day ${index + 1}", style: TextStyle(fontSize: 11)),
+          Text("${nombre}"),
         ],
       ),
     );
